@@ -26,7 +26,7 @@ Gemini is your default. If you also have a **Claude** or **ChatGPT** subscriptio
 2. Search for your assistant and install it (for example, **Claude Code** for Claude, or the **Codex / ChatGPT** extension for ChatGPT).
 3. Run it and **sign in with your existing subscription** when the extension prompts you to authenticate.
 
-No subscription? No problem. Gemini has you covered.
+Don't have either one? You can skip this step. Step 2 already set you up with Gemini through our Google credits.
 
 ## Step 4: Get the repo and your tasks
 
