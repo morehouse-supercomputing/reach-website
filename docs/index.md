@@ -18,9 +18,9 @@ Once I have your Google email, I will:
 
 Everyone gets Gemini. That is your default assistant for the summer.
 
-## Step 3: Bring your own agent (optional)
+## Step 3: Add your own agent (optional)
 
-Already have a **Claude** or **ChatGPT** account? Tell me. I will have you add **Claude Code** (or your assistant) inside the Antigravity IDE, so you also have an agentic partner you already know. No account, no problem. Gemini has you covered.
+If you already have a **Claude** or **ChatGPT** subscription, add its extension inside the Antigravity IDE and sign in through the prompts the extension gives you. That gets you an agentic coding partner you already know, on top of Gemini. No subscription, no problem. Gemini has you covered.
 
 ## Step 4: Get the repo and your tasks
 
