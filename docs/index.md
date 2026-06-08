@@ -1,107 +1,100 @@
-# REACH Website Contributor Onboarding
+# Let's get you building
 
-Welcome to the REACH Cultural Competency Benchmark Website summer cohort. This page walks you through everything you set up before you start building. Work through it top to bottom. If a step blocks you, post in the cohort channel or bring it to a standing meeting. Do not stay stuck.
+I am glad you are here. You already got your welcome when you accepted your spot, so I am going to skip the speeches and get you set up to work.
 
-Our tooling goal is to get hands-on with a full modern AI development stack. You will work in **Google Antigravity** (an agentic IDE), using **Claude Code** as the primary coding assistant and **Gemini** where it makes sense to leverage our Google Cloud credits. Learning to move between these tools is part of the program.
+Here is what you are walking into. You and four teammates are building the public home for REACH, the place where the world will see what a 12 school consortium has learned about how well today's AI actually understands the communities we serve. This is not a class project. It is the real dissemination platform, and your name is on it.
 
----
+The part I am most excited about: you are going to build it on the same stack that powers real products, and that stack is powered by Google. Google put the tools and the cloud behind this consortium, and you get to use all of it. By October you will have shipped a live, cloud deployed site and presented it at INSPIRE. That is a portfolio most developers twice your age do not have.
 
-## 0. Accounts you need first
+So let's get your tools on.
 
-Before anything else, make sure you have:
+## Your toolkit, powered by Google
 
-- [ ] Your **REACH project Google account** (used for Antigravity and our Google Cloud credits)
-- [ ] A **GitHub account**, and you have **accepted the invite** to `morehouse-supercomputing/reach-website` (check your email)
-- [ ] Sent Dr. Scruse your **GitHub username** and **preferred project email**
-- [ ] Signed and returned your **Engagement Agreement**
+Everything you build this summer runs on Google's platform. Get comfortable with these, because they are exactly what professional teams are reaching for right now.
 
----
+- **Google Antigravity** is your home base, Google's agentic IDE. You will write, run, and ship everything from here.
+- **Gemini** is your Google native copilot. Lean on it for anything that touches Google Cloud, Vertex AI, or BigQuery. It knows that world cold.
+- **Vertex AI** is how we serve live model demos on the site, real AI running in the browser for anyone who visits.
+- **Google Cloud** (Cloud Run, Cloud Storage) is where the site lives and where our data stays safe.
+- **Claude Code** is also available inside Antigravity, and I like it for heavy multi file reasoning. Use it where it helps; reach for Gemini to keep our Google credits working for us.
+
+The credits are real money Google invested in this consortium, so use the tools with intention. If we ever need to upgrade something, we have budget for it, just tell me.
+
+## Before you start
+
+Make sure you have these in hand:
+
+- [ ] Your **REACH Google account** (this is what unlocks Antigravity and our Google Cloud credits)
+- [ ] A **GitHub account**, with the invite to `morehouse-supercomputing/reach-website` accepted (check your email)
+- [ ] Your signed **Engagement Agreement** back to me
 
 ## 1. Install Google Antigravity
 
-Antigravity is the IDE we all build in.
-
-1. Download Google Antigravity for your operating system and install it.
-2. Open it and **sign in with your REACH project Google account** (not a personal Gmail).
-3. Confirm it opens to a workspace. You will connect a project folder in Step 4.
-
-> Exact menu labels may differ slightly by version. The pattern is the same: sign in with Google, then connect a repo.
+1. Download Antigravity for your operating system and install it.
+2. Open it and sign in with your **REACH Google account**, not a personal Gmail.
+3. Let it open to a workspace. You will connect the project in Step 5.
 
 ## 2. Connect our Google Cloud credits
 
-So your AI usage draws on the consortium credits, not your own:
-
 1. In Antigravity, sign in to or select the **REACH Google Cloud project** when prompted.
-2. If you are asked to choose a billing or credits source, pick the REACH project.
-3. If you cannot see the project, tell Dr. Scruse. You may need to be added to the Cloud project first.
+2. If you are asked which billing or credits source to use, choose the REACH project so your work draws on the consortium credits and not your own.
+3. If you cannot see the project, tell me. I may need to add you to the Cloud project first.
 
-## 3. Choose your coding assistant
+## 3. Set up your assistants
 
-You have two agents available inside Antigravity. Use both over the summer.
+Inside Antigravity, enable both **Gemini** and **Claude Code** in the assistant settings. Sign in to each.
 
-- **Claude Code (primary).** Default to this for most build work, especially anything that needs careful reasoning, multi-file changes, or debugging. Sign in or enable it in Antigravity's assistant settings.
-- **Gemini (use to leverage credits).** Reach for Gemini on Google-native tasks (Vertex AI, Cloud Run, BigQuery) and to spread usage across our Google credits.
+My rule of thumb: Gemini first for anything Google native (Vertex AI, Cloud Run, BigQuery), Claude Code when you are wrestling with logic across a lot of files. Switching between them is a skill, and by August you will be fluent in both.
 
-Rule of thumb: **Claude Code by default, Gemini when the task is Google-native or when we are conserving Claude usage.** If we hit Claude Code limits and need to upgrade, we have a software budget line for it, so flag it to Dr. Scruse.
+## 4. Connect GitHub
 
-## 4. Authenticate GitHub
+1. **Easiest path:** in Antigravity's source control settings, choose "Sign in with GitHub" and authorize.
+2. **If it asks for a token instead:** create a GitHub fine grained Personal Access Token scoped to only the `reach-website` repo, with Contents and Pull requests set to read and write. Paste it where Antigravity asks.
+3. **Never put a token in the repo.** If one ever lands in a file by accident, tell me right away so we can revoke it. No trouble, just speed.
 
-Connect Antigravity to GitHub so you can clone, branch, and open pull requests.
+## 5. Clone the repo
 
-1. **Preferred: OAuth.** In Antigravity's GitHub or source-control settings, choose "Sign in with GitHub" and authorize. This is the easiest path.
-2. **If a token is required instead:** create a GitHub **fine-grained Personal Access Token** scoped to *only* the `reach-website` repo, with **Contents** and **Pull requests** read and write. Paste it where Antigravity or `git` asks for credentials.
-   - **Never commit a token.** It does not go in the repo, ever. If you ever paste one into a file by accident, tell Dr. Scruse immediately so we can revoke it.
+From Antigravity, open `morehouse-supercomputing/reach-website` straight from GitHub, or run:
 
-## 5. Clone the repository
+```
+git clone https://github.com/morehouse-supercomputing/reach-website.git
+```
 
-1. From Antigravity, open `morehouse-supercomputing/reach-website` (Clone or Open from GitHub), or run:
-   ```
-   git clone https://github.com/morehouse-supercomputing/reach-website.git
-   ```
-2. Open the folder in Antigravity.
+Then open the folder in Antigravity. You are in.
 
 ## 6. Find your work
 
-- Your tasks are **GitHub Issues** labeled with your role (for example `role:data-viz`).
-- They are grouped by **milestone** (M0 through M4), and the milestones line up with the pay schedule.
-- The full picture (roles, milestones, deliverables) lives in the project's `cohort-plan.md`.
+Your tasks are waiting for you as GitHub Issues, labeled with your role and grouped by milestone (M0 through M4). The milestones line up with the pay schedule, so finishing your work and getting paid are the same moment. The big picture lives in `cohort-plan.md`.
 
-## 7. How we work: branches and pull requests
+## 7. How we work
 
-This is the most important section. **Nobody pushes to `main`.** `main` is protected and only Dr. Scruse can merge into it.
+One rule holds everything together: **nobody pushes to `main` but me.** That is not about control, it is so the live site never breaks and every change gets a second set of eyes.
 
-For every piece of work:
+Your loop for every piece of work:
 
-1. **Create a branch** named `your-role/short-description`, for example:
-   ```
-   git checkout -b data-viz/heatmap
-   ```
-2. Make your changes and **commit** them with a clear message.
-3. **Push your branch:**
-   ```
-   git push -u origin data-viz/heatmap
-   ```
-4. **Open a Pull Request** into `main` and request **Dr. Scruse** as reviewer.
-5. A **preview deploy URL** is generated on your PR. Open it and check your change looks right.
-6. Dr. Scruse reviews, requests changes if needed, and **merges**. You never merge your own PR.
+1. Branch off `main`, named for your work, like `data-viz/heatmap`.
+2. Build it, commit with a clear message.
+3. Push your branch and **open a Pull Request** into `main`, with me as reviewer.
+4. Your PR gets its own **preview link**, a live version of your change. Open it, make sure it looks right.
+5. I review, we tighten anything that needs it, and I merge. You never merge your own.
 
-## 8. Your weekly output
+## 8. Your weekly check-in
 
-Every Monday you get a **weekly issue** (`type:weekly`). Check off your expected output for the week and link the PR or demo that shows it. This is how we track momentum and how milestone sign-off (and payment) gets confirmed.
+Every Monday you get a short weekly issue. Drop in what you shipped that week and link the PR or demo that proves it. That is how I track momentum and clear your milestone for payment. Keep it honest and keep it moving.
 
-## 9. The no-data rule
+## 9. The one hard rule
 
-Because this repository is **public**, sensitive material never goes in it:
+This repo is public, on purpose, so your work is visible and yours to show off. That means nothing sensitive goes in it:
 
-- **No** benchmark data, draft results, or partner pre-publication materials.
-- **No** credentials, API keys, `.env` files, or service-account JSON.
+- No benchmark data, draft results, or partner materials before they are published.
+- No credentials, API keys, `.env` files, or service account keys.
 
-Those live in **private Google Cloud Storage** and the app reads them at runtime. The `.gitignore` blocks the common cases, but know the rule yourself.
+All of that lives in private Google Cloud Storage, and the site reads it at runtime. We have guardrails in place, but you own knowing the rule.
 
-## 10. Getting help
+## 10. When you're stuck
 
-- **Standing meetings** run 3x per week for planning, unblocking, and accountability.
-- Bring blockers early. Label a stuck issue `blocked` and say so.
-- When in doubt about scope, check `cohort-plan.md` or ask Dr. Scruse.
+We meet three times a week to plan, unblock, and keep each other honest. Do not sit on a blocker. Flag it, label the issue `blocked`, and bring it. Asking early is what strong researchers do.
 
-Welcome aboard. Let us build something worth presenting at INSPIRE.
+Now let's build something that makes Google glad they bet on us. See you at kickoff.
+
+Dr. Scruse
