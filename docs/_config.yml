@@ -1,3 +1,7 @@
-title: REACH Website — Contributor Onboarding
+title: REACH Website Contributor Onboarding
 description: How the REACH summer cohort sets up its tools and contributes to the dissemination site.
-theme: jekyll-theme-cayman
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+exclude:
+  - README.md
