@@ -1,6 +1,6 @@
-# REACH Website — Contributor Onboarding
+# REACH Website Contributor Onboarding
 
-Welcome to the REACH Cultural Competency Benchmark Website summer cohort. This page walks you through everything you set up before you start building. Work through it top to bottom. If a step blocks you, post in the cohort channel or bring it to a standing meeting; do not stay stuck.
+Welcome to the REACH Cultural Competency Benchmark Website summer cohort. This page walks you through everything you set up before you start building. Work through it top to bottom. If a step blocks you, post in the cohort channel or bring it to a standing meeting. Do not stay stuck.
 
 Our tooling goal is to get hands-on with a full modern AI development stack. You will work in **Google Antigravity** (an agentic IDE), using **Claude Code** as the primary coding assistant and **Gemini** where it makes sense to leverage our Google Cloud credits. Learning to move between these tools is part of the program.
 
@@ -31,30 +31,30 @@ Antigravity is the IDE we all build in.
 
 So your AI usage draws on the consortium credits, not your own:
 
-1. In Antigravity, sign in to / select the **REACH Google Cloud project** when prompted.
+1. In Antigravity, sign in to or select the **REACH Google Cloud project** when prompted.
 2. If you are asked to choose a billing or credits source, pick the REACH project.
-3. If you cannot see the project, tell Dr. Scruse, you may need to be added to the Cloud project first.
+3. If you cannot see the project, tell Dr. Scruse. You may need to be added to the Cloud project first.
 
 ## 3. Choose your coding assistant
 
 You have two agents available inside Antigravity. Use both over the summer.
 
-- **Claude Code (primary).** Default to this for most build work, especially anything that needs careful reasoning, multi-file changes, or debugging. Sign in / enable it in Antigravity's assistant settings.
+- **Claude Code (primary).** Default to this for most build work, especially anything that needs careful reasoning, multi-file changes, or debugging. Sign in or enable it in Antigravity's assistant settings.
 - **Gemini (use to leverage credits).** Reach for Gemini on Google-native tasks (Vertex AI, Cloud Run, BigQuery) and to spread usage across our Google credits.
 
-Rule of thumb: **Claude Code by default, Gemini when the task is Google-native or when we are conserving Claude usage.** If we hit Claude Code limits and need to upgrade, we have a software budget line for it, flag it to Dr. Scruse.
+Rule of thumb: **Claude Code by default, Gemini when the task is Google-native or when we are conserving Claude usage.** If we hit Claude Code limits and need to upgrade, we have a software budget line for it, so flag it to Dr. Scruse.
 
 ## 4. Authenticate GitHub
 
 Connect Antigravity to GitHub so you can clone, branch, and open pull requests.
 
-1. **Preferred: OAuth.** In Antigravity's GitHub/source-control settings, choose "Sign in with GitHub" and authorize. This is the easiest path.
-2. **If a token is required instead:** create a GitHub **fine-grained Personal Access Token** scoped to *only* the `reach-website` repo, with **Contents** and **Pull requests** read/write. Paste it where Antigravity (or `git`) asks for credentials.
+1. **Preferred: OAuth.** In Antigravity's GitHub or source-control settings, choose "Sign in with GitHub" and authorize. This is the easiest path.
+2. **If a token is required instead:** create a GitHub **fine-grained Personal Access Token** scoped to *only* the `reach-website` repo, with **Contents** and **Pull requests** read and write. Paste it where Antigravity or `git` asks for credentials.
    - **Never commit a token.** It does not go in the repo, ever. If you ever paste one into a file by accident, tell Dr. Scruse immediately so we can revoke it.
 
 ## 5. Clone the repository
 
-1. From Antigravity, open `morehouse-supercomputing/reach-website` (Clone / Open from GitHub), or run:
+1. From Antigravity, open `morehouse-supercomputing/reach-website` (Clone or Open from GitHub), or run:
    ```
    git clone https://github.com/morehouse-supercomputing/reach-website.git
    ```
@@ -104,4 +104,4 @@ Those live in **private Google Cloud Storage** and the app reads them at runtime
 - Bring blockers early. Label a stuck issue `blocked` and say so.
 - When in doubt about scope, check `cohort-plan.md` or ask Dr. Scruse.
 
-Welcome aboard. Let's build something worth presenting at INSPIRE.
+Welcome aboard. Let us build something worth presenting at INSPIRE.
