@@ -22,9 +22,9 @@ Gemini is your default. If you also have a **Claude** or **ChatGPT** subscriptio
 
 Don't have either one? You can skip this step. Step 2 already set you up with Gemini through our Google credits.
 
-## 4. Join our Discord
+## 4. Get on our Slack
 
-This is where we talk day to day. The invite link is in your welcome email. Join before Tuesday.
+This is where we talk day to day. Reply to your welcome email and tell me **which email you would like connected to Slack** (it can be the same one from Step 2). I will send you the invite before Tuesday.
 
 ---
 
