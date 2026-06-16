@@ -24,6 +24,8 @@ Click your name to see your task list. Tasks are GitHub Issues, grouped by miles
 - **Milestones** group the tasks into phases ([M0 through M4](https://github.com/morehouse-supercomputing/reach-website/milestones)). The milestones line up with the pay schedule, so finishing a milestone and getting paid are the same moment.
 - **Your weekly output** is checked in every Monday (see the onboarding guide).
 
+Meeting agendas and notes live in [meetings/](meetings/).
+
 ## How we work
 
 Nobody pushes to `main` but Dr. Scruse, so the live site never breaks. You never merge your own work.
