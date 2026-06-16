@@ -24,12 +24,22 @@ Click your name to see your task list. Tasks are GitHub Issues, grouped by miles
 
 ## How we work
 
-Nobody pushes to `main` but Dr. Scruse, so the live site never breaks.
+Nobody pushes to `main` but Dr. Scruse, so the live site never breaks. You never merge your own work.
+
+**For a normal task (most of the time):**
 
 1. Branch off `main`, named for your work, like `data-viz/heatmap`.
 2. Commit, push your branch, and open a Pull Request into `main` with Dr. Scruse as reviewer.
 3. Your PR gets a live preview link. Check it.
-4. Dr. Scruse reviews and merges. You never merge your own.
+4. Dr. Scruse reviews and merges. The branch auto-deletes after merge.
+
+**When several people build one feature together (like the live demo):**
+
+Share one feature branch instead of each working alone. Everyone works on the same branch, pulls before pushing, and it goes to `main` as a single Pull Request once it is done. There is also a structured option for bigger features where each person opens a Pull Request into the shared branch first.
+
+The golden rule on any shared branch: run `git pull` before you `git push`, every time.
+
+Full step-by-step workflow, shared-branch options, and conflict handling are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Repository layout
 
