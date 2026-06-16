@@ -4,7 +4,7 @@ The public dissemination platform for the Google REACH GenAI Consortium (Workstr
 
 New here? Start with the onboarding guide: https://morehouse-supercomputing.github.io/reach-website/
 
-**Week 1 (ideation):** we plan together before we build. See the [Week 1 plan](https://morehouse-supercomputing.github.io/reach-website/plan/) and edit your role's planning doc.
+**Week 1 (ideation):** we plan together in [PLAN.md](PLAN.md) before we build. Edit your role's section there on a branch, then open a Pull Request.
 
 ## The team and your tasks
 
