@@ -50,4 +50,7 @@ infra/    Cloud Run, IAM, deploy config
 docs/     onboarding guide and project docs
 ```
 
-Sensitive data (benchmark results, drafts, credentials) never lives in this repo. It stays in private Google Cloud Storage.
+This repo is public and holds code only.
+
+- **Data** (benchmark results, drafts, partner materials) lives in a private Google Cloud Storage bucket, read at runtime.
+- **Secrets** (API keys, the values in `.env`) stay on your own machine and are set as environment variables in the host, backed by Google Secret Manager. They never go in the repo or in Cloud Storage.
