@@ -7,7 +7,7 @@ This is our shared playbook for version control. Read it once, refer back when y
 1. **Nobody pushes to `main` but Dr. Scruse.** Everything reaches `main` through a Pull Request that she reviews and merges.
 2. **One branch per task, not per person.** Branches are short-lived and disposable.
 3. **`git pull` before you `git push`.** Every time. This is what prevents most conflicts.
-4. **Never commit sensitive data.** No benchmark data, unpublished results, credentials, keys, or `.env` files. Those live in private Google Cloud Storage. This repo is public.
+4. **Never commit data or secrets.** This repo is public and holds code only. Benchmark data and unpublished results live in a private Google Cloud Storage bucket (read at runtime). Secrets (API keys, the values in `.env`) stay on your own machine and are set as environment variables in the host, backed by Google Secret Manager. A `.env` file never gets pushed anywhere, it just sits on your laptop.
 
 ## Branch naming
 
