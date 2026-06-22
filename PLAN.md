@@ -41,7 +41,7 @@ Each of you owns a section. Edit it on a branch named `your-role/ideation`, open
 
 This week, investigate before you collect:
 
-1. Email Sharifa Vinson (sharifav@google.com, Google WS5 Lead) to find out what data already exists.
+1. Email Sharifa Vinson (<sharifav@google.com>, Google WS5 Lead) to find out what data already exists.
 2. Get access to what is there.
 3. Collect what is missing (the 12 institution logos, headshots, bios).
 4. Build an intake form only if the data does not exist.
@@ -59,6 +59,10 @@ Your notes:
 This week, propose the visualizations (map of the 12 HBCUs, institution-by-workstream view, workstream outcomes) and list the data each one needs.
 
 Your notes:
+
+- We could create sections, in which we show how each HBCU contributed to the Reach project (simple description, photo, and how what they contributed to the project was significant).
+- We could have visuals that outline what a workstream is, aswell as what schools were working on which workstream, and then outlining what each workstream planned to accomplish.
+- We could have graphs and charts that touch on why the project was needed, such as finding if theres stats on the amount of students that get racilaly profiled at institutions, or institutions that misuse culture as a way to "reqruitt" more students of color.
 
 ### James, Wireframes and design
 
