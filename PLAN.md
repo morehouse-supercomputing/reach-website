@@ -61,8 +61,8 @@ This week, propose the visualizations (map of the 12 HBCUs, institution-by-works
 Your notes:
 
 - We could create sections, in which we show how each HBCU contributed to the Reach project (simple description, photo, and how what they contributed to the project was significant).
-- We could have visuals that outline what a workstream is, aswell as what schools were working on which workstream, and then outlining what each workstream planned to accomplish.
-- We could have graphs and charts that touch on why the project was needed, such as finding if theres stats on the amount of students that get racilaly profiled at institutions, or institutions that misuse culture as a way to "reqruitt" more students of color.
+- We could have visuals that outline what a workstream is, aswell as what schools were working on which workstream, and then outlining what each workstream planned to accomplish. For this, we would need to know what each HBCU contributed to their workstream, as well as potentially statements from the HBCU's about their time working on their stream.
+- We could have graphs and charts that touch on why the project was needed, such as finding if theres stats on the amount of students that get racilaly profiled at institutions, or institutions that misuse culture as a way to "recruit" more students of color.
 
 ### James, Wireframes and design
 
