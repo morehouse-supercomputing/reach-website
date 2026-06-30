@@ -37,11 +37,16 @@ v1 is the consortium itself. The benchmark findings come later and plug into the
 
 Each of you owns a section. Edit it on a branch named `your-role/ideation`, open a Pull Request, and Dr. Scruse merges it.
 
-### Wendell, Data collection
+### Newman, Data collection
 
 This week, investigate before you collect:
 
-1. Email Sharifa Vinson (sharifav@google.com, Google WS5 Lead) to find out what data already exists.
+1. Email Sharifa Vinson (sharifav@google.com, Google WS5 Lead) to find out what data already exists (cc me --ashley.scruse@morehouse.edu).
+   1. Participants (and their institutions)
+   2. Workstream group members
+   3. Is there any results/data from other workstreams to show on the site
+      1. whoever she can connect you with to get the information
+   4. Is there a doc that has
 2. Get access to what is there.
 3. Collect what is missing (the 12 institution logos, headshots, bios).
 4. Build an intake form only if the data does not exist.
@@ -54,11 +59,19 @@ This week, draft how we structure institutions, workstreams, and the link betwee
 
 Your notes:
 
+- Cloud SQL
+  - Dr. Scruse -- Setup the Cloud SQL access through the google clould project folder
+- Cloud Storage Bucket
+- Structure in draw SQL -- Schema
+
 ### De'Andre, Visualizations
 
 This week, propose the visualizations (map of the 12 HBCUs, institution-by-workstream view, workstream outcomes) and list the data each one needs.
 
 Your notes:
+
+- Decide some interactive ways to tell the story
+- What Google Cloud apps/software can we leverage to help make the story interactive?
 
 ### James, Wireframes and design
 
@@ -66,8 +79,15 @@ This week, sketch the key pages (home, institution profile, workstream page, exp
 
 Your notes:
 
+- Figma (find out if Google has an equivalent)
+- Google stitch <-- AI Agent that brings wireframes to life
+- How do we honor every entities brand?
+
 ### Chase, Site architecture
 
 This week, propose the routes and the stack (Next.js, TypeScript, Tailwind) and the deploy approach. Explore the Antigravity IDE so you can scaffold Monday.
 
 Your notes:
+
+- Decide the best tech stack
+- Next.js is the team favorite
