@@ -1,16 +1,18 @@
-# web/ — the website application
+# web/ — the REACH website (Next.js)
 
-The Next.js site (TypeScript + Tailwind). This is what gets deployed.
+The site application: Next.js (App Router) + TypeScript + Tailwind.
 
-**Owners:** Chase (front-end and architecture) and James (UI components), with De'Andre's visualizations and Wendell's content rendered inside it.
+**Owners:** Chase (front-end and architecture) and James (UI), with De'Andre's visualizations and Wendell's content rendered here.
 
-Chase scaffolds the Next.js app here in M1. Once scaffolded, the typical layout is:
-
+## Run it locally
 ```
-web/
-├── app/          routes (home, institutions, workstreams, about)
-├── components/   UI components (James) and visualizations (De'Andre)
-└── content/      institution and workstream content (Wendell)
+cd web
+npm install
+npm run dev
 ```
+Then open http://localhost:3000
 
-Until then this folder is a placeholder.
+## Structure
+- `app/` routes (home, institutions, workstreams, about)
+- `app/` components and visualizations live alongside the routes
+- `public/` static assets (logos, images)
