@@ -64,6 +64,18 @@ Your notes:
 - Cloud Storage Bucket
 - Structure in draw SQL -- Schema
 
+Needs for the website:
+
+* Project Directory
+* Profiles for 12 Schools
+* Profiles each person
+
+**INSTITUTIONS & WORKSTREAMS**
+
+Institutions are our top-level org entities (publishers, partner orgs, internal desks) with each has an ID, name, and its own publishing permissions.
+
+Workstreams are the pipelines that actually produce content (e.g. Investigations, Data Reports). Each Workstream belongs to one Institution, and each Institution can have many Workstreams. I'm keeping this 1-to-many for now instead of many-to-many for simplicity. If change is needed later on, we can reapproach this.
+
 ### De'Andre, Visualizations
 
 This week, propose the visualizations (map of the 12 HBCUs, institution-by-workstream view, workstream outcomes) and list the data each one needs.
@@ -94,3 +106,4 @@ Your notes:
 
 - Decide the best tech stack
 - Next.js is the team favorite
+
