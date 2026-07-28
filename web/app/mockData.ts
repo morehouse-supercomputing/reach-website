@@ -5,6 +5,7 @@ export interface Institution {
   logo: string;
   bio: string;
   workstreams: string[];
+  flourishId?: string; // live Flourish chart id; when unset, the institution page shows a placeholder guide
 }
 
 export interface Workstream {
@@ -33,6 +34,7 @@ export interface NewsItem {
   excerpt: string;
   category: 'Press Release' | 'Consortium News' | 'Media Asset';
   content: string;
+  localViz?: "workshopMap" | "survey" | "funding" | "matrix"; // renders the matching LocalVisualizations chart in the detail modal
 }
 
 export const mockInstitutions: Institution[] = [
@@ -243,7 +245,8 @@ export const mockNews: NewsItem[] = [
     date: "June 2026",
     excerpt: "WS5 announces the disbursement of $50,000 to each of the 12 partner universities, creating over 100 student research opportunities.",
     category: "Press Release",
-    content: "To support the talent pipeline, Workstream 5 has established a $600,000 collective student research budget. Each of the 12 universities receives $50,000 to pay student researchers a standardized stipend of $25 per hour (assuming 200 hours over a 10-week summer window). The initial call generated 33 project submissions, supporting fully remote participation and cross-institutional collaboration."
+    content: "To support the talent pipeline, Workstream 5 has established a $600,000 collective student research budget. Each of the 12 universities receives $50,000 to pay student researchers a standardized stipend of $25 per hour (assuming 200 hours over a 10-week summer window). The initial call generated 33 project submissions, supporting fully remote participation and cross-institutional collaboration.",
+    localViz: "funding"
   },
   {
     id: "news-2",
@@ -251,7 +254,8 @@ export const mockNews: NewsItem[] = [
     date: "July 2026",
     excerpt: "With the conclusion of the Taos County rural workshop, the consortium has gathered over 1,800 total raw queries for analysis.",
     category: "Consortium News",
-    content: "The Data Collection & Curation team (WS2) completed its sequence of in-person community validation workshops. Across D.C., Los Angeles, Baltimore, Tuskegee, Chicago, and Taos County, everyday users and domain experts drafted query chains using the 'Query Layering Method'. Over 1,052 queries scored above the 1.7 threshold and have been formatted into the training corpus."
+    content: "The Data Collection & Curation team (WS2) completed its sequence of in-person community validation workshops. Across D.C., Los Angeles, Baltimore, Tuskegee, Chicago, and Taos County, everyday users and domain experts drafted query chains using the 'Query Layering Method'. Over 1,052 queries scored above the 1.7 threshold and have been formatted into the training corpus.",
+    localViz: "workshopMap"
   },
   {
     id: "news-3",
