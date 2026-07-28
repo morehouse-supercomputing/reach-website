@@ -53,6 +53,16 @@ This week, investigate before you collect:
 
 Your notes:
 
+- **Email Draft to Sharifa Vinson (Google WS5 Lead):**
+  - *Subject*: REACH Consortium Website - Existing Data & Media Assets Inquiry
+  - *Body*: Introduce the web build project, inquire about current participant directories, workstream assignments, existing logos, bios, and photos. CC Dr. Scruse (`ashley.scruse@morehouse.edu`).
+- **Data Collection Status Tracker:**
+  - Create a structured Google Sheet to track completion for all 12 partner institutions (Logo SVG, Leader Bio, Headshot, student list).
+- **Consortium Marketing & Dissemination Plan (WS5):**
+  - *Media Kit*: Create a downloadable asset pack containing logos, brand colors, and boilerplate text.
+  - *Social Media*: Prepare draft announcements for LinkedIn/X showcasing the 12 HBCU partners.
+  - *News Section*: Scaffold a "Consortium Updates & Press" page on the site to share milestones.
+
 ### Kanayo, Data model
 
 This week, draft how we structure institutions, workstreams, and the link between them. Decide where the data lives and where media lives.

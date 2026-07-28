@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Mostly White background */
+  --foreground: #2d2627; /* Charcoal/maroon-tinted text */
+  
+  /* REACH Morehouse Brand Palette */
+  --maroon-primary: #7A1C2C; /* Morehouse Maroon (Secondary Text/Accents) */
+  --maroon-light: #A32E42;
+  --maroon-dark: #4A0E17;
+  --cream-light: #ffffff;
+  --cream-primary: #FCFAF6; /* Soft Cream card background */
+  --cream-dark: #F5EFEB;
+  
+  --card-bg: #FCFAF6; /* Cream cards */
+  --card-border: rgba(122, 28, 44, 0.15); /* Maroon outline borders */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-plus-jakarta-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Add custom theme classes for Tailwind */
+  --color-maroon-dark: var(--maroon-dark);
+  --color-maroon-primary: var(--maroon-primary);
+  --color-maroon-light: var(--maroon-light);
+  --color-cream-light: var(--cream-light);
+  --color-cream-primary: var(--cream-primary);
+  --color-cream-dark: var(--cream-dark);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Enforced light theme (ignore dark media queries to keep visual consistency) */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, sans-serif;
+  overflow-x: hidden;
 }
+
+/* Custom premium styles */
+.glassmorphism {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--maroon-light) 0%, var(--maroon-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
