@@ -150,7 +150,11 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {mockInstitutions.map((inst) => (
-                <div key={inst.id} className="p-5 rounded-2xl bg-cream-primary/30 hover:bg-cream-primary/70 border border-zinc-200/40 hover:border-maroon-primary/20 transition-all duration-200 flex flex-col justify-between">
+                <Link
+                  key={inst.id}
+                  href={`/institutions/${inst.id}`}
+                  className="p-5 rounded-2xl bg-cream-primary/30 hover:bg-cream-primary/70 border border-zinc-200/40 hover:border-maroon-primary/20 transition-all duration-200 flex flex-col justify-between"
+                >
                   <div>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="h-9 w-9 rounded-lg bg-maroon-primary text-white font-extrabold text-xs flex items-center justify-center border border-maroon-primary/20">
@@ -172,7 +176,7 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
