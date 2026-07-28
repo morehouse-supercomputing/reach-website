@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {
@@ -52,6 +52,23 @@ REACH Consortium Web Build Team`
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
+
+  const closeNewsModal = useCallback(() => setSelectedNews(null), []);
+
+  const isNewsModalOpen = selectedNews !== null;
+
+  useEffect(() => {
+    if (!isNewsModalOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeNewsModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isNewsModalOpen, closeNewsModal]);
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-zinc-800 font-sans antialiased">
@@ -242,33 +259,41 @@ REACH Consortium Web Build Team`
 
       {/* News Modal */}
       {selectedNews && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="rounded-2xl bg-white border border-zinc-200/60 max-w-3xl w-full p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto">
-            <button
-              onClick={() => setSelectedNews(null)}
-              className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 text-xl font-bold"
-            >
-              &times;
-            </button>
-            <div className="flex gap-2 items-center mb-4">
+        <div
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={closeNewsModal}
+        >
+          <div
+            className="rounded-2xl bg-white border border-zinc-200/60 max-w-3xl w-full shadow-2xl relative max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 z-10 bg-white flex gap-2 items-center px-8 pt-8 pb-4">
               <span className="px-2.5 py-0.5 rounded bg-maroon-primary text-white text-[10px] font-bold">
                 {selectedNews.category}
               </span>
               <span className="text-xs text-zinc-400">{selectedNews.date}</span>
+              <button
+                onClick={closeNewsModal}
+                className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 text-xl font-bold"
+              >
+                &times;
+              </button>
             </div>
-            <h3 className="text-2xl font-black text-maroon-primary mb-4">{selectedNews.title}</h3>
-            <div className="h-px w-full bg-zinc-100 my-4"></div>
-            <p className="text-zinc-650 text-sm leading-relaxed whitespace-pre-line">
-              {selectedNews.content}
-            </p>
-            {selectedNews.localViz && (
-              <div className="mt-6">
-                {selectedNews.localViz === "workshopMap" && <WorkshopMapLocal />}
-                {selectedNews.localViz === "survey" && <SurveyFindingsLocal />}
-                {selectedNews.localViz === "funding" && <StudentFundingLocal />}
-                {selectedNews.localViz === "matrix" && <EvaluationGridLocal />}
-              </div>
-            )}
+            <div className="px-8 pb-8">
+              <h3 className="text-2xl font-black text-maroon-primary mb-4">{selectedNews.title}</h3>
+              <div className="h-px w-full bg-zinc-100 my-4"></div>
+              <p className="text-zinc-650 text-sm leading-relaxed whitespace-pre-line">
+                {selectedNews.content}
+              </p>
+              {selectedNews.localViz && (
+                <div className="mt-6">
+                  {selectedNews.localViz === "workshopMap" && <WorkshopMapLocal />}
+                  {selectedNews.localViz === "survey" && <SurveyFindingsLocal />}
+                  {selectedNews.localViz === "funding" && <StudentFundingLocal />}
+                  {selectedNews.localViz === "matrix" && <EvaluationGridLocal />}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

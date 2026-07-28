@@ -26,7 +26,7 @@ export default async function InstitutionPage({
     institution.workstreams.includes(ws.id)
   );
   const hostedWorkshop = mockWorkshopMetrics.find(
-    (w) => w.location === institution.location
+    (w) => w.location === institution.location && w.audience.includes(institution.name)
   );
 
   return (
@@ -129,7 +129,7 @@ export default async function InstitutionPage({
               <div className="mt-6">
                 {institution.flourishId ? (
                   <FlourishEmbed id={institution.flourishId} minHeight="400px" />
-                ) : (
+                ) : process.env.NODE_ENV !== "production" ? (
                   <div className="p-4 bg-cream-primary rounded-xl border border-maroon-primary/20 text-left text-xs">
                     <p className="font-bold text-maroon-primary flex items-center gap-1.5">
                       <span>💡</span> Flourish Integration Guide:
@@ -144,7 +144,7 @@ export default async function InstitutionPage({
                       <code className="font-mono text-zinc-800">flourishId</code> to your live Flourish project ID.
                     </p>
                   </div>
-                )}
+                ) : null}
               </div>
             </section>
           </div>
