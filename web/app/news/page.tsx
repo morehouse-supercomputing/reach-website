@@ -3,6 +3,12 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import {
+  WorkshopMapLocal,
+  SurveyFindingsLocal,
+  StudentFundingLocal,
+  EvaluationGridLocal,
+} from "../components/LocalVisualizations";
 import { mockNews, NewsItem } from "../mockData";
 
 export default function NewsPage() {
@@ -94,38 +100,67 @@ REACH Consortium Web Build Team`
               </div>
             </div>
 
-            {/* News list */}
-            <div className="space-y-6">
-              {filteredNews.map((item) => (
-                <article 
-                  key={item.id}
-                  className="rounded-2xl bg-white border border-zinc-200/60 p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+            {/* News list: featured hero + grid */}
+            {filteredNews.length > 0 && (
+              <>
+                <button
+                  onClick={() => setSelectedNews(filteredNews[0])}
+                  className="w-full text-left rounded-3xl bg-maroon-primary p-8 sm:p-10 shadow-md hover:shadow-lg transition-all duration-200 relative overflow-hidden"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-maroon-primary/5 text-maroon-primary border border-maroon-primary/10">
-                        {item.category}
-                      </span>
-                      <time className="text-xs text-zinc-400 font-medium">{item.date}</time>
-                    </div>
-                    <h3 className="text-xl font-bold text-maroon-primary mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-zinc-600 text-sm leading-relaxed mb-4">
-                      {item.excerpt}
-                    </p>
+                  <div className="absolute top-0 right-0 h-40 w-40 bg-white/5 rounded-bl-full pointer-events-none"></div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/15 text-white border border-white/20">
+                      Featured &middot; {filteredNews[0].category}
+                    </span>
+                    <time className="text-xs text-white/70 font-medium">{filteredNews[0].date}</time>
                   </div>
-                  
-                  <button
-                    onClick={() => setSelectedNews(item)}
-                    className="text-xs font-bold text-maroon-primary hover:text-maroon-light transition-colors self-start flex items-center gap-1"
-                  >
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 leading-tight">
+                    {filteredNews[0].title}
+                  </h3>
+                  <p className="text-white/80 text-sm leading-relaxed max-w-2xl mb-4">
+                    {filteredNews[0].excerpt}
+                  </p>
+                  <span className="text-xs font-bold text-white flex items-center gap-1">
                     Read Full Details
                     <span>&rarr;</span>
-                  </button>
-                </article>
-              ))}
-            </div>
+                  </span>
+                </button>
+
+                {filteredNews.length > 1 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {filteredNews.slice(1).map((item) => (
+                      <article
+                        key={item.id}
+                        className="rounded-2xl bg-white border border-zinc-200/60 p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-4">
+                            <span className="inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-maroon-primary/5 text-maroon-primary border border-maroon-primary/10">
+                              {item.category}
+                            </span>
+                            <time className="text-xs text-zinc-400 font-medium">{item.date}</time>
+                          </div>
+                          <h3 className="text-xl font-bold text-maroon-primary mb-2">
+                            {item.title}
+                          </h3>
+                          <p className="text-zinc-600 text-sm leading-relaxed mb-4">
+                            {item.excerpt}
+                          </p>
+                        </div>
+
+                        <button
+                          onClick={() => setSelectedNews(item)}
+                          className="text-xs font-bold text-maroon-primary hover:text-maroon-light transition-colors self-start flex items-center gap-1"
+                        >
+                          Read Full Details
+                          <span>&rarr;</span>
+                        </button>
+                      </article>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
           </div>
 
           {/* Media Kit and Communication Tools Sidebar (1/3 width) */}
@@ -208,7 +243,7 @@ REACH Consortium Web Build Team`
       {/* News Modal */}
       {selectedNews && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="rounded-2xl bg-white border border-zinc-200/60 max-w-2xl w-full p-8 shadow-2xl relative">
+          <div className="rounded-2xl bg-white border border-zinc-200/60 max-w-3xl w-full p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto">
             <button
               onClick={() => setSelectedNews(null)}
               className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 text-xl font-bold"
@@ -226,6 +261,14 @@ REACH Consortium Web Build Team`
             <p className="text-zinc-650 text-sm leading-relaxed whitespace-pre-line">
               {selectedNews.content}
             </p>
+            {selectedNews.localViz && (
+              <div className="mt-6">
+                {selectedNews.localViz === "workshopMap" && <WorkshopMapLocal />}
+                {selectedNews.localViz === "survey" && <SurveyFindingsLocal />}
+                {selectedNews.localViz === "funding" && <StudentFundingLocal />}
+                {selectedNews.localViz === "matrix" && <EvaluationGridLocal />}
+              </div>
+            )}
           </div>
         </div>
       )}
