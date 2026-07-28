@@ -64,6 +64,32 @@ Your notes:
 - Cloud Storage Bucket
 - Structure in draw SQL -- Schema
 
+Needs for the website:
+
+* Project Directory
+* Profiles for 12 Schools
+* Profiles each person
+
+**INSTITUTIONS & WORKSTREAMS**
+
+Institutions are our top-level org entities (publishers, partner orgs, internal desks) with each having an ID, name, and its own publishing permissions.
+
+Workstreams are the pipelines that actually produce content (e.g. Investigations, Data Reports). Each Workstream belongs to one Institution, and each Institution can have many Workstreams. I'm keeping this 1-to-many for now instead of many-to-many — simpler to reason about, and we can add a join table later if cross-institution collaboration becomes a real need.
+
+Content Items link up to a Workstream, which gives us the Institution for free (no need to duplicate that data on every record).
+
+> Institution (1) ──< (many) Workstream ──< (many) Content Item
+
+**WHERE THINGS LIVE**
+
+Data (institutions, workstreams, content metadata + body, users/roles)
+→ Cloud SQL — DB engine TBD (MySQL vs. Postgres). Leaning toward deciding once we know more about query patterns and team bandwidth to learn a new engine. Either way this is our source of truth, relational, with integrity constraints enforced.
+
+Media (images, video, PDFs)
+→ Cloud Storage, referenced by URL from Content Items, served through Cloud CDN.
+
+Splitting it this way keeps the DB lean and fast, lets media scale/version independently, and keeps CDN caching straightforward since media URLs don't change.
+
 ### De'Andre, Visualizations
 
 This week, propose the visualizations (map of the 12 HBCUs, institution-by-workstream view, workstream outcomes) and list the data each one needs.
@@ -94,3 +120,4 @@ Your notes:
 
 - Decide the best tech stack
 - Next.js is the team favorite
+
