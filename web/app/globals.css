@@ -1,26 +1,179 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* DESIGN.md — "Academic Precision" */
+  --surface: #faf8ff;
+  --surface-dim: #d2d9f4;
+  --surface-bright: #faf8ff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f2f3ff;
+  --surface-container: #eaedff;
+  --surface-container-high: #e2e7ff;
+  --surface-container-highest: #dae2fd;
+  --on-surface: #131b2e;
+  --on-surface-variant: #424753;
+  --inverse-surface: #283044;
+  --inverse-on-surface: #eef0ff;
+  --outline: #727785;
+  --outline-variant: #c2c6d5;
+  --surface-tint: #005ac1;
+  --primary: #0058bd;
+  --on-primary: #ffffff;
+  --primary-container: #2771df;
+  --on-primary-container: #fefcff;
+  --inverse-primary: #adc6ff;
+  --secondary: #5c5f61;
+  --on-secondary: #ffffff;
+  --secondary-container: #e0e3e5;
+  --on-secondary-container: #626567;
+  --tertiary: #4648d4;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #6063ee;
+  --on-tertiary-container: #fffbff;
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+  --primary-fixed: #d8e2ff;
+  --primary-fixed-dim: #adc6ff;
+  --on-primary-fixed: #001a41;
+  --on-primary-fixed-variant: #004494;
+  --secondary-fixed: #e0e3e5;
+  --secondary-fixed-dim: #c4c7c9;
+  --on-secondary-fixed: #191c1e;
+  --on-secondary-fixed-variant: #444749;
+  --tertiary-fixed: #e1e0ff;
+  --tertiary-fixed-dim: #c0c1ff;
+  --on-tertiary-fixed: #07006c;
+  --on-tertiary-fixed-variant: #2f2ebe;
+  --background: #faf8ff;
+  --on-background: #131b2e;
+  --surface-variant: #dae2fd;
 }
 
 @theme inline {
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-surface-tint: var(--surface-tint);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-inverse-primary: var(--inverse-primary);
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-primary-fixed: var(--on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-secondary-fixed-dim: var(--secondary-fixed-dim);
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--on-tertiary-fixed-variant);
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-on-background: var(--on-background);
+  --color-surface-variant: var(--surface-variant);
+  --font-sans: var(--font-plus-jakarta-sans);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Spacing rhythm — 8px base unit */
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 40px;
+  --spacing-stack-sm: 8px;
+  --spacing-stack-md: 16px;
+  --spacing-stack-lg: 32px;
+  --container-max: 1280px;
+
+  /* Microinteractions — all transitions ease on this curve */
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--on-background);
+  font-family: var(--font-plus-jakarta-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Typography scale */
+.text-display-lg {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 768px) {
+  .text-display-lg {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+.text-headline-md {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+.text-body-md {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.text-label-sm {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.text-label-xs {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+/* Elevation — "Linear-style" soft ambient shadows */
+.shadow-elevation-1 {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+.shadow-elevation-2 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Primary buttons — tactile top-light gradient + inset border, per DESIGN.md */
+.btn-elevated {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.2s, transform 0.2s, filter 0.2s;
+}
+.btn-elevated:hover {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.06);
 }
