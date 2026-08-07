@@ -1,7 +1,85 @@
 "use client";
 
-import Link from "next/link";
-import { INSTITUTIONS_DATA, RESEARCHERS_DATA } from "../../lib/data";
+import { INSTITUTIONS_DATA, type Institution } from "../../lib/data";
+import LogoImage from "../../components/LogoImage";
+
+// Placeholder copy until real institution bios are written.
+const FEATURE_BIO =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
+const STANDARD_BIOS = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.",
+];
+
+function initialsFor(name: string) {
+  return name
+    .split(" ")
+    .map((word) => word[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+
+function InstitutionCard({ institution, index }: { institution: Institution; index: number }) {
+  // Every 4th tile is the "feature" tile in the bento rhythm.
+  const isFeature = index % 4 === 0;
+  const bio = isFeature ? FEATURE_BIO : STANDARD_BIOS[index % STANDARD_BIOS.length];
+
+  return (
+    <article
+      className={`group relative flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/60 hover:border-primary shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300 hover:-translate-y-0.5 ${
+        isFeature ? "lg:col-span-2 lg:row-span-2" : ""
+      }`}
+    >
+      {/* Header band in the school's own colors */}
+      <div
+        className={`relative bg-gradient-to-br ${institution.accentColor} ${
+          isFeature ? "h-32 lg:h-40" : "h-20"
+        }`}
+      >
+        <span className="absolute top-4 right-4 text-label-xs px-2.5 py-1 rounded-full bg-black/20 text-white backdrop-blur-sm">
+          Est. {institution.founded}
+        </span>
+      </div>
+
+      <div className="px-6 pb-6 flex-1 flex flex-col relative">
+        {/* Logo bubble */}
+        <div
+          className={`relative -mt-10 mb-4 rounded-2xl overflow-hidden border-4 border-surface-container-lowest shadow-md bg-surface-container-lowest ${
+            isFeature ? "w-24 h-24 -mt-12" : "w-16 h-16"
+          }`}
+        >
+          <LogoImage
+            src={institution.logo}
+            alt={`${institution.name} logo`}
+            className="h-full w-full object-contain p-2"
+            fallback={
+              <div
+                className={`h-full w-full flex items-center justify-center font-bold text-white bg-gradient-to-br ${institution.accentColor} ${
+                  isFeature ? "text-2xl" : "text-base"
+                }`}
+              >
+                {initialsFor(institution.name)}
+              </div>
+            }
+          />
+        </div>
+
+        <h2 className={`text-on-surface mb-1 ${isFeature ? "text-headline-md" : "text-base font-semibold"}`}>
+          {institution.name}
+        </h2>
+        <p className="text-label-xs text-outline mb-3">
+          {institution.city}, {institution.state}
+        </p>
+        <p className={`text-sm text-on-surface-variant ${isFeature ? "" : "line-clamp-3"}`}>
+          {bio}
+        </p>
+      </div>
+    </article>
+  );
+}
 
 export default function InstitutionsPage() {
   return (
@@ -18,85 +96,12 @@ export default function InstitutionsPage() {
         </div>
       </header>
 
-      {/* Hierarchy */}
-      <main className="max-w-5xl mx-auto py-16 px-4 md:px-10">
-        <div className="relative">
-          {/* Vertical spine */}
-          <div className="absolute left-6 top-2 bottom-2 w-px bg-outline-variant md:left-1/2" />
-
-          <div className="flex flex-col gap-16">
-            {INSTITUTIONS_DATA.map((institution, index) => {
-              const people = RESEARCHERS_DATA.filter(
-                (r) => r.institution === institution.name
-              );
-              const alignRight = index % 2 === 1;
-
-              return (
-                <div
-                  key={institution.id}
-                  className={`relative flex flex-col md:flex-row items-start gap-6 ${
-                    alignRight ? "md:flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Node dot */}
-                  <span
-                    className={`absolute left-6 md:left-1/2 top-2 -translate-x-1/2 h-3 w-3 rounded-full bg-gradient-to-br ${institution.accentColor} ring-4 ring-background`}
-                  />
-
-                  {/* Card */}
-                  <div className="w-full md:w-1/2 pl-14 md:pl-0 md:px-8">
-                    <div className="bg-surface-container-lowest rounded-2xl border border-outline-variant/60 shadow-elevation-1 hover:shadow-elevation-2 transition-shadow duration-300 p-6">
-                      <div
-                        className={`inline-block h-1.5 w-12 rounded-full bg-gradient-to-r ${institution.accentColor} mb-4`}
-                      />
-                      <h2 className="text-headline-md mb-1 text-on-surface">
-                        {institution.name}
-                      </h2>
-                      <p className="text-label-xs text-outline mb-4">
-                        {institution.city}, {institution.state} &middot; Founded {institution.founded}
-                      </p>
-                      <p className="text-body-md text-on-surface-variant mb-5">
-                        {institution.history}
-                      </p>
-
-                      {people.length > 0 && (
-                        <div className="pt-4 border-t border-outline-variant/40">
-                          <p className="text-label-xs text-outline mb-3">
-                            Contributors
-                          </p>
-                          <div className="flex flex-wrap gap-3">
-                            {people.map((person) => {
-                              const initials = `${person.firstName[0]}${person.lastName[0]}`;
-                              return (
-                                <Link
-                                  key={person.id}
-                                  href="/researchers"
-                                  title={`${person.firstName} ${person.lastName} — view directory`}
-                                  className="group flex flex-col items-center gap-1.5"
-                                >
-                                  <div
-                                    className={`h-12 w-12 rounded-xl overflow-hidden border-2 border-surface-container-lowest shadow-md flex items-center justify-center font-bold text-sm ${person.avatarColor} transition-transform duration-200 group-hover:scale-105`}
-                                  >
-                                    {initials}
-                                  </div>
-                                  <span className="text-[10px] text-on-surface-variant group-hover:text-primary transition-colors">
-                                    {person.lastName}
-                                  </span>
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Spacer for the other half on desktop */}
-                  <div className="hidden md:block md:w-1/2" />
-                </div>
-              );
-            })}
-          </div>
+      {/* Bento grid */}
+      <main className="max-w-7xl mx-auto py-16 px-4 md:px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(260px,auto)] grid-flow-row-dense gap-6">
+          {INSTITUTIONS_DATA.map((institution, index) => (
+            <InstitutionCard key={institution.id} institution={institution} index={index} />
+          ))}
         </div>
       </main>
     </div>

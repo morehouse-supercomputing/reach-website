@@ -1,12 +1,19 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { RESEARCHERS_DATA } from "../lib/data";
+
+// Below this width the fanned side cards render mostly off-screen, so pull them
+// in closer and flatten the rotation to keep them visible/tappable.
+const MOBILE_BREAKPOINT = "(max-width: 767px)";
+const SWIPE_THRESHOLD_PX = 40;
 
 export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const dragStartX = useRef<number | null>(null);
 
   const filteredList = useMemo(() => {
     return RESEARCHERS_DATA.filter((r) => {
@@ -23,6 +30,14 @@ export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: 
   useEffect(() => {
     setActiveIndex(0);
   }, [filteredList.length]);
+
+  useEffect(() => {
+    const mql = window.matchMedia(MOBILE_BREAKPOINT);
+    setIsMobile(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     if (!isAutoplay || filteredList.length <= 1) return;
@@ -47,6 +62,18 @@ export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: 
     if (filteredList.length <= 1) return;
     setIsAutoplay(false);
     setActiveIndex((prev) => (prev === 0 ? filteredList.length - 1 : prev - 1));
+  };
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    dragStartX.current = e.clientX;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (dragStartX.current === null) return;
+    const deltaX = e.clientX - dragStartX.current;
+    dragStartX.current = null;
+    if (deltaX <= -SWIPE_THRESHOLD_PX) handleNext();
+    else if (deltaX >= SWIPE_THRESHOLD_PX) handlePrev();
   };
 
   const current = filteredList[activeIndex];
@@ -79,8 +106,11 @@ export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: 
         <>
           {/* 3D Stage */}
           <div
-            className="relative w-full h-[460px] md:h-[560px]"
-            style={{ perspective: "1800px" }}
+            className="relative w-full h-[460px] md:h-[560px] cursor-grab active:cursor-grabbing"
+            style={{ perspective: "1800px", touchAction: "pan-y" }}
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={() => { dragStartX.current = null; }}
           >
             <div
               className="relative w-full h-full"
@@ -94,9 +124,9 @@ export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: 
                 const initials = `${researcher.firstName[0]}${researcher.lastName[0]}`;
                 const isActive = offset === 0;
 
-                const translateX = offset * 320;
-                const translateZ = -abs * 180;
-                const rotateY = offset * -38;
+                const translateX = offset * (isMobile ? 170 : 320);
+                const translateZ = -abs * (isMobile ? 90 : 180);
+                const rotateY = offset * (isMobile ? -22 : -38);
                 const scale = 1 - abs * 0.16;
                 const opacity = 1 - abs * 0.4;
 

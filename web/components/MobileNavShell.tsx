@@ -15,7 +15,7 @@ function PushableContent({ children }: { children: ReactNode }) {
       {/* Whole page — pushed right when the drawer opens */}
       <div
         className="relative z-10 min-h-screen flex flex-col bg-background transition-transform duration-300 ease-in-out"
-        style={{ transform: isOpen ? `translateX(${DRAWER_WIDTH}px)` : "translateX(0)" }}
+        style={{ transform: isOpen ? `translateX(${DRAWER_WIDTH}px)` : undefined }}
       >
         {children}
 

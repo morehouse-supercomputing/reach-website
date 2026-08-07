@@ -109,6 +109,8 @@ export interface Institution {
   founded: number;
   history: string;
   accentColor: string;
+  /** Path under /public to the school's logo PNG. Falls back to initials if missing. */
+  logo?: string;
 }
 
 export const INSTITUTIONS_DATA: Institution[] = [
@@ -120,7 +122,8 @@ export const INSTITUTIONS_DATA: Institution[] = [
     founded: 1867,
     history:
       "Founded in 1867, Morehouse is the nation's only historically Black liberal arts college for men, known for producing generations of civic and academic leaders.",
-    accentColor: "from-primary to-primary-container",
+    accentColor: "from-[#84142D] to-[#3D0D1B]",
+    logo: "/logos/morehouse-college.png",
   },
   {
     id: "spelman-college",
@@ -130,7 +133,8 @@ export const INSTITUTIONS_DATA: Institution[] = [
     founded: 1881,
     history:
       "Founded in 1881, Spelman is a historically Black liberal arts college for women and a leading producer of Black women who go on to earn doctorates in STEM.",
-    accentColor: "from-tertiary to-tertiary-container",
+    accentColor: "from-[#00337F] to-[#001A44]",
+    logo: "/logos/spelman-college.png",
   },
   {
     id: "howard-university",
@@ -140,7 +144,8 @@ export const INSTITUTIONS_DATA: Institution[] = [
     founded: 1867,
     history:
       "Founded in 1867 in the nation's capital, Howard is a research university spanning undergraduate, graduate, and professional programs across a wide range of disciplines.",
-    accentColor: "from-secondary to-secondary-container",
+    accentColor: "from-[#003DA5] to-[#E4002B]",
+    logo: "/logos/howard-university.png",
   },
   {
     id: "hampton-university",
@@ -150,7 +155,8 @@ export const INSTITUTIONS_DATA: Institution[] = [
     founded: 1868,
     history:
       "Founded in 1868, Hampton began as a school for formerly enslaved people and has grown into a comprehensive research university on Virginia's coast.",
-    accentColor: "from-primary-container to-tertiary",
+    accentColor: "from-[#00539B] to-[#0A2F5C]",
+    logo: "/logos/hampton-university.png",
   },
   {
     id: "tuskegee-university",
@@ -160,6 +166,84 @@ export const INSTITUTIONS_DATA: Institution[] = [
     founded: 1881,
     history:
       "Founded in 1881 by Booker T. Washington, Tuskegee built a legacy of applied science and engineering leadership, from George Washington Carver's research to the Tuskegee Airmen.",
-    accentColor: "from-tertiary-container to-primary",
+    accentColor: "from-[#9E1B32] to-[#C5A059]",
+    logo: "/logos/tuskegee-university.png",
+  },
+  {
+    id: "florida-am-university",
+    name: "Florida A&M University",
+    city: "Tallahassee",
+    state: "FL",
+    founded: 1887,
+    history:
+      "Founded in 1887, FAMU is the nation's top-ranked public HBCU, with a long-standing reputation for producing leaders in pharmacy, journalism, and business.",
+    accentColor: "from-[#FF7900] to-[#046A38]",
+    logo: "/logos/florida-am-university.png",
+  },
+  {
+    id: "north-carolina-at",
+    name: "North Carolina A&T State University",
+    city: "Greensboro",
+    state: "NC",
+    founded: 1891,
+    history:
+      "Founded in 1891, NC A&T is the nation's largest HBCU by enrollment and a leading producer of Black engineering graduates.",
+    accentColor: "from-[#003087] to-[#B3A369]",
+    logo: "/logos/north-carolina-at.png",
+  },
+  {
+    id: "xavier-university-of-louisiana",
+    name: "Xavier University of Louisiana",
+    city: "New Orleans",
+    state: "LA",
+    founded: 1925,
+    history:
+      "Founded in 1925, Xavier is the nation's only historically Black and Catholic university, and a top producer of Black students who go on to medical school.",
+    accentColor: "from-[#00205B] to-[#C4B581]",
+    logo: "/logos/xavier-university-of-louisiana.png",
+  },
+  {
+    id: "clark-atlanta-university",
+    name: "Clark Atlanta University",
+    city: "Atlanta",
+    state: "GA",
+    founded: 1988,
+    history:
+      "Formed in 1988 from the merger of Clark College and Atlanta University, CAU carries forward more than a century and a half of combined academic tradition.",
+    accentColor: "from-[#C41230] to-[#1A1A1A]",
+    logo: "/logos/clark-atlanta-university.png",
+  },
+  {
+    id: "alabama-state-university",
+    name: "Alabama State University",
+    city: "Montgomery",
+    state: "AL",
+    founded: 1867,
+    history:
+      "Founded in 1867, Alabama State University has grown from a teacher's college into a comprehensive research university at the heart of the civil rights movement.",
+    accentColor: "from-[#111111] to-[#C5A059]",
+    logo: "/logos/alabama-state-university.png",
+  },
+  {
+    id: "prairie-view-am-university",
+    name: "Prairie View A&M University",
+    city: "Prairie View",
+    state: "TX",
+    founded: 1876,
+    history:
+      "Founded in 1876, Prairie View A&M is one of the oldest public institutions of higher education in Texas, with strong programs in engineering and nursing.",
+    accentColor: "from-[#4B116F] to-[#F2A900]",
+    logo: "/logos/prairie-view-am-university.png",
+  },
+  {
+    id: "southern-university",
+    name: "Southern University",
+    city: "Baton Rouge",
+    state: "LA",
+    founded: 1880,
+    history:
+      "Founded in 1880, Southern University is the flagship of the nation's only historically Black university system, anchoring Baton Rouge's Scotlandville community.",
+    accentColor: "from-[#0033A0] to-[#F2A900]",
+    logo: "/logos/southern-university.png",
   },
 ];

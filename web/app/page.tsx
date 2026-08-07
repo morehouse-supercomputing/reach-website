@@ -45,33 +45,36 @@ export default function Home() {
             onSubmit={handleSearchSubmit}
             className="w-full max-w-2xl bg-surface-container-lowest border border-outline-variant p-2 rounded-2xl md:rounded-full shadow-elevation-1 hover:shadow-elevation-2 flex flex-col md:flex-row gap-2 items-stretch md:items-center transition-all duration-300 mb-6"
           >
-            {/* Search Icon */}
-            <div className="flex items-center pl-4 pr-1 py-1.5">
-              <svg className="h-4 w-4 text-on-surface-variant" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
+            {/* Icon + input always share a row, even on mobile */}
+            <div className="flex-1 flex items-center min-w-0">
+              {/* Search Icon */}
+              <div className="flex items-center pl-4 pr-1 py-1.5">
+                <svg className="h-4 w-4 text-on-surface-variant" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
 
-            {/* Input field */}
-            <div className="flex-1 relative py-1.5 px-3">
-              <input
-                type="text"
-                placeholder="Search researchers by name, school, role, or interest..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent text-sm focus:outline-none placeholder:text-outline text-on-surface"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface cursor-pointer"
-                >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              )}
+              {/* Input field */}
+              <div className="flex-1 relative py-1.5 px-3">
+                <input
+                  type="text"
+                  placeholder="Search researchers by name, school, role, or interest..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent text-sm focus:outline-none placeholder:text-outline text-on-surface"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface cursor-pointer"
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Search Submit Button */}
