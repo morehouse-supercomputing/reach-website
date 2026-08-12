@@ -39,6 +39,11 @@ function MobileDrawerTrigger() {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
+  if (pathname === "/") {
+    return null;
+  }
+
   return (
     <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-[16px] border-b border-outline-variant/60 px-4 md:px-10">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16">

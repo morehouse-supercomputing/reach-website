@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { MobileDrawerProvider, useMobileDrawer, DRAWER_WIDTH } from "../lib/mobile-drawer-context";
 import MobileNavDrawer from "./MobileNavDrawer";
 
@@ -33,6 +34,11 @@ function PushableContent({ children }: { children: ReactNode }) {
 }
 
 export default function MobileNavShell({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  if (pathname === "/") {
+    return <>{children}</>;
+  }
+
   return (
     <MobileDrawerProvider>
       <PushableContent>{children}</PushableContent>

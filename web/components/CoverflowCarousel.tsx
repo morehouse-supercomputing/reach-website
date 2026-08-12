@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
-import { RESEARCHERS_DATA } from "../lib/data";
+import { useRouter } from "next/navigation";
+import { RESEARCHERS_DATA, researcherSlug } from "../lib/data";
 
 // Below this width the fanned side cards render mostly off-screen, so pull them
 // in closer and flatten the rotation to keep them visible/tappable.
@@ -14,6 +15,7 @@ export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: 
   const [isAutoplay, setIsAutoplay] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const dragStartX = useRef<number | null>(null);
+  const router = useRouter();
 
   const filteredList = useMemo(() => {
     return RESEARCHERS_DATA.filter((r) => {
@@ -133,8 +135,8 @@ export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: 
                 return (
                   <button
                     key={researcher.id}
-                    onClick={() => goTo(index)}
-                    aria-label={`Show ${researcher.firstName} ${researcher.lastName}`}
+                    onClick={() => (isActive ? router.push(`/researchers/${researcherSlug(researcher)}`) : goTo(index))}
+                    aria-label={isActive ? `View ${researcher.firstName} ${researcher.lastName}'s profile` : `Show ${researcher.firstName} ${researcher.lastName}`}
                     className="absolute left-1/2 top-1/2 w-80 md:w-[26rem] cursor-pointer transition-transform duration-500 ease-in-out"
                     style={{
                       transform: `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
@@ -168,9 +170,17 @@ export default function CoverflowCarousel({ searchQuery = "" }: { searchQuery?: 
                       </p>
 
                       {isActive && (
-                        <p className="text-sm text-on-surface-variant leading-relaxed line-clamp-3 mt-3 pt-3 border-t border-outline-variant/40">
-                          {researcher.bio}
-                        </p>
+                        <>
+                          <p className="text-sm text-on-surface-variant leading-relaxed line-clamp-3 mt-3 pt-3 border-t border-outline-variant/40">
+                            {researcher.bio}
+                          </p>
+                          <span className="mt-3 text-label-xs font-semibold text-primary inline-flex items-center gap-1">
+                            View profile
+                            <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                          </span>
+                        </>
                       )}
                     </div>
                   </button>

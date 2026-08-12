@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useMemo, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import { RESEARCHERS_DATA, INSTITUTION_NAMES, WORKSTREAMS } from "../../lib/data";
+import { useRouter, useSearchParams } from "next/navigation";
+import { RESEARCHERS_DATA, INSTITUTION_NAMES, WORKSTREAMS, researcherSlug } from "../../lib/data";
 
 const INSTITUTIONS = ["All Institutions", ...INSTITUTION_NAMES];
 const WORKSTREAM_OPTIONS = ["All Workstreams", ...WORKSTREAMS];
 
 function ResearchersGridContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") || "";
   const [searchQuery, setSearchQuery] = useState(initialQuery);
@@ -129,7 +130,13 @@ function ResearchersGridContent() {
               return (
                 <article
                   key={researcher.id}
-                  className="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/60 hover:border-primary shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300 transform hover:-translate-y-0.5"
+                  onClick={() => router.push(`/researchers/${researcherSlug(researcher)}`)}
+                  role="link"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") router.push(`/researchers/${researcherSlug(researcher)}`);
+                  }}
+                  className="group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/60 hover:border-primary shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
                 >
                   {/* Decorative Gradient Header Card */}
                   <div className="h-24 bg-gradient-to-r from-surface-container to-surface-container-high relative">
@@ -168,6 +175,7 @@ function ResearchersGridContent() {
                     <div className="mt-auto pt-4 border-t border-outline-variant/40 flex items-center justify-between text-xs text-outline">
                       <a
                         href={`mailto:${researcher.email}`}
+                        onClick={(e) => e.stopPropagation()}
                         className="hover:text-primary transition-colors flex items-center gap-1.5"
                       >
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,6 +188,7 @@ function ResearchersGridContent() {
                           href={researcher.linkedin}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="hover:text-primary transition-colors flex items-center gap-1.5"
                         >
                           <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
