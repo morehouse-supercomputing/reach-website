@@ -84,7 +84,7 @@ export default function Home() {
         <div className="wrap row">
           <div className="logo"><span className="mk" />REACH</div>
           <div className="links">
-            <a href="#mission">Mission</a><a href="#framework">Framework</a><a href="#leaderboard">Leaderboard</a><a href="/collaborators">Collaborators</a><a href="#roadmap">Roadmap</a>
+            <a href="#mission">Mission</a><a href="#framework">Framework</a><a href="#leaderboard">Leaderboard</a><a href="/collaborators">Collaborators</a><a href="/gallery">Gallery</a><a href="#roadmap">Roadmap</a>
           </div>
           <div className="right"><a className="btn blue sm" href="#leaderboard">View the Leaderboard</a></div>
         </div>

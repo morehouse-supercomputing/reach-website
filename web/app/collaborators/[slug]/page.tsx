@@ -29,7 +29,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
         <div className="wrap row">
           <a className="logo" href="/"><span className="mk" />REACH</a>
           <div className="links">
-            <a href="/#mission">Mission</a><a href="/#framework">Framework</a><a href="/#leaderboard">Leaderboard</a><a href="/collaborators" style={{ color: "var(--blue)" }}>Collaborators</a>
+            <a href="/#mission">Mission</a><a href="/#framework">Framework</a><a href="/#leaderboard">Leaderboard</a><a href="/collaborators" style={{ color: "var(--blue)" }}>Collaborators</a><a href="/gallery">Gallery</a>
           </div>
           <div className="right"><a className="btn out sm" href="/collaborators">All collaborators</a></div>
         </div>
@@ -142,7 +142,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
       <footer className="f"><div className="wrap"><div className="cols">
         <div><div className="brandline">REACH</div><p style={{ maxWidth: 300 }}>The Representation Evaluation + Cultural Heuristics GenAI Consortium. A peer-level Google Research and HBCU partnership.</p></div>
         <div><h5>Project</h5><a href="/#mission">North Star</a><a href="/#framework">Framework</a><a href="/#leaderboard">Leaderboard</a></div>
-        <div><h5>Consortium</h5><a href="/collaborators">Collaborators</a><a href="/#consortium">Workstreams</a><a href="/#roadmap">Roadmap</a></div>
+        <div><h5>Consortium</h5><a href="/collaborators">Collaborators</a><a href="/gallery">Gallery</a><a href="/#consortium">Workstreams</a><a href="/#roadmap">Roadmap</a></div>
         <div><h5>This partner</h5><a href="#people">People</a><a href="#workstreams">Workstreams</a><a href="/collaborators">Back to all</a></div>
       </div><div className="bottom">© 2026 REACH GenAI Consortium · Google Research Impact Lab × HBCU Partners</div></div></footer>
     </main>
