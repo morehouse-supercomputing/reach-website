@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { albums, shots, byAlbum, type Shot } from "./data";
+import StatusNote from "../components/StatusNote";
 
 export default function GalleryPage() {
   const [filter, setFilter] = useState<string>("all");
@@ -69,6 +70,8 @@ export default function GalleryPage() {
             Twelve HBCUs and Google Research do this together, in person, city by city.
             These are the rooms where the taxonomy got argued over and the queries got written.
           </p>
+
+          <div style={{ marginTop: 30 }}><StatusNote /></div>
 
           <div className="gal-bar">
             <div className="gal-chips">

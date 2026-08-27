@@ -320,3 +320,18 @@ footer.f .bottom { margin-top: 40px; padding-top: 22px; border-top: 1px solid #3
 .gal-arrow.r { right: 28px; }
 @media (max-width: 700px){ .gal-arrow { display: none; } .gal-box { padding: 20px; } }
 @media (prefers-reduced-motion: reduce){ .gal-tile, .gal-mk, .gal-chip { transition: none; } .gal-tile { transform: none; } }
+
+/* in-progress notice */
+.statnote {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--paper); border: 1px solid var(--border); border-left: 4px solid var(--amber);
+  border-radius: var(--r); padding: 18px 22px; box-shadow: var(--shadow);
+  max-width: 780px;
+}
+.statnote p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+.statnote strong { color: var(--ink); font-weight: 600; }
+.statnote-mk {
+  flex: none; margin-top: 4px; width: 20px; height: 20px; border-radius: 50% 50% 50% 6px;
+  background: conic-gradient(from -50deg, var(--blue) 0 25%, var(--red) 0 50%, var(--amber) 0 75%, var(--green) 0);
+  opacity: .55;
+}

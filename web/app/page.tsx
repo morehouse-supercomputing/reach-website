@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import StatusNote from "./components/StatusNote";
 
 const partners = [
   { slug: "morehouse", abbr: "MC", name: "Morehouse College", role: "Partner Institution", logo: "/morehouse-college-seal.svg" },
@@ -110,6 +111,10 @@ export default function Home() {
         <div className="marq-cap">Google Research + 12 HBCU partner institutions</div>
         <div className="marquee"><div className="track">{[...marq, ...marq].map((m, i) => (<div className="chip logo" key={i}><img className="lg" src={m.logo} alt={m.name} /></div>))}</div></div>
       </header>
+
+      <section style={{ padding: "44px 0 0" }}>
+        <div className="wrap"><StatusNote /></div>
+      </section>
 
       {/* MISSION */}
       <section className="block alt" id="mission">
