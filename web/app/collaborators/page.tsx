@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { institutions, accents } from "./data";
+import { institutions, accents, monogram } from "./data";
 import ChromaGrid from "../../components/ChromaGrid";
 
 export const metadata: Metadata = { title: "Collaborators · REACH GenAI Consortium" };
@@ -8,7 +8,7 @@ export default function CollaboratorsPage() {
   const items = institutions.map((i) => {
     const c = accents[i.slug] || "#1a73e8";
     return {
-      image: i.logo,
+      image: i.logo || monogram(i.abbr, accents[i.slug] || "#1a73e8"),
       title: i.name,
       subtitle: `${i.role} · ${i.location}`,
       borderColor: c,

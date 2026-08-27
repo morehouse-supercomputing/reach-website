@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { institutions, bySlug, initials, personSlug, students, accents, WS_META } from "../data";
+import { institutions, bySlug, initials, monogram, personSlug, students, accents, WS_META } from "../data";
 import ChromaGrid from "../../../components/ChromaGrid";
 
 const avatar = (init: string) =>
@@ -56,7 +56,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
             </div>
           </div>
           <div className="card" style={{ display: "grid", placeItems: "center", padding: 40, background: "var(--paper)" }}>
-            <img src={i.logo} alt={`${i.name} seal`} style={{ width: 180, height: 180, objectFit: "contain" }} />
+            <img src={i.logo || monogram(i.abbr, accents[i.slug] || "#1a73e8")} alt={`${i.name} seal`} style={{ width: 180, height: 180, objectFit: "contain" }} />
           </div>
         </div>
       </section>
@@ -72,7 +72,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
               items={i.people.map((f) => {
                 const c = accents[i.slug] || "#1a73e8";
                 return {
-                  image: avatar(initials(f.name)),
+                  image: f.photo || avatar(initials(f.name)),
                   title: f.name,
                   subtitle: f.title,
                   borderColor: c,
@@ -97,7 +97,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
               <ChromaGrid
                 radius={300}
                 items={students.map((st) => ({
-                  image: avatar(initials(st.name)),
+                  image: st.photo || avatar(initials(st.name)),
                   title: st.name,
                   subtitle: st.role,
                   meta: st.institution !== "Morehouse College" ? st.institution : undefined,

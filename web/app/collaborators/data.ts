@@ -1,4 +1,4 @@
-export type Person = { name: string; title: string };
+export type Person = { name: string; title: string; photo?: string };
 export type WS = "WS1" | "WS2" | "WS3" | "WS4" | "WS5";
 
 export type Institution = {
@@ -42,7 +42,7 @@ export const institutions: Institution[] = [
     slug: "morehouse",
     name: "Morehouse College",
     abbr: "MC",
-    role: "Lead Institution",
+    role: "Partner Institution",
     logo: "/morehouse-college-seal.svg",
     location: "Atlanta, Georgia",
     people: [
@@ -196,7 +196,9 @@ export const institutions: Institution[] = [
     name: "Xavier University of Louisiana",
     abbr: "XU",
     role: "Partner Institution",
-    logo: "/xavier-university-logo.png",
+    // The previous asset was Xavier University (Cincinnati), a different school.
+    // Falls back to the XU monogram until XULA supplies its own mark.
+    logo: "",
     location: "New Orleans, Louisiana",
     people: [
       { name: "Dr. Andrea Edwards", title: "Faculty + Chair, Computer Science" },
@@ -206,6 +208,12 @@ export const institutions: Institution[] = [
     workstreams: [],
   },
 ];
+
+export const monogram = (abbr: string, color = "#1a73e8") =>
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><circle cx='150' cy='150' r='128' fill='none' stroke='${color}' stroke-width='4' opacity='0.45'/><text x='150' y='190' text-anchor='middle' font-family='Georgia, serif' font-size='96' font-weight='700' fill='${color}'>${abbr}</text></svg>`
+  );
 
 export const bySlug = (slug: string) => institutions.find((i) => i.slug === slug);
 export const initials = (name: string) =>
@@ -242,6 +250,7 @@ export type Student = {
   role: string;
   institution: string;
   github?: string;
+  photo?: string;
   accent: string;
   bio: string;
   focus: string[];
