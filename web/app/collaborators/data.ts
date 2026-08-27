@@ -196,9 +196,7 @@ export const institutions: Institution[] = [
     name: "Xavier University of Louisiana",
     abbr: "XU",
     role: "Partner Institution",
-    // The previous asset was Xavier University (Cincinnati), a different school.
-    // Falls back to the XU monogram until XULA supplies its own mark.
-    logo: "",
+    logo: "/xavier-hbcu-logo.svg",
     location: "New Orleans, Louisiana",
     people: [
       { name: "Dr. Andrea Edwards", title: "Faculty + Chair, Computer Science" },

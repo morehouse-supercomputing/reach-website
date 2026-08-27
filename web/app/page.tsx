@@ -13,7 +13,7 @@ const partners = [
   { slug: "prairie-view", abbr: "PV", name: "Prairie View A&M", role: "Partner Institution", logo: "/prairie-view-seal.svg" },
   { slug: "spelman", abbr: "SC", name: "Spelman College", role: "Partner Institution", logo: "/spelman-college-logo.svg" },
   { slug: "tuskegee", abbr: "TU", name: "Tuskegee University", role: "Partner Institution", logo: "/tuskegee-university-seal.svg" },
-  { slug: "xavier", abbr: "XU", name: "Xavier University of Louisiana", role: "Partner Institution", logo: "" },
+  { slug: "xavier", abbr: "XU", name: "Xavier University of Louisiana", role: "Partner Institution", logo: "/xavier-hbcu-logo.svg" },
 ];
 const marq = [{ name: "Google Research", logo: "/google-research-logo-t.png" }, ...partners.map((p) => ({ name: p.name, logo: p.logo }))].filter((m) => m.logo);
 
