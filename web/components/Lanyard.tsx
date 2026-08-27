@@ -26,7 +26,10 @@ extend({ MeshLineGeometry, MeshLineMaterial });
 declare module '@react-three/fiber' {
   interface ThreeElements {
     meshLineGeometry: ThreeElement<typeof MeshLineGeometry>;
-    meshLineMaterial: ThreeElement<typeof MeshLineMaterial>;
+    // `args` is optional here: the material is configured by props, not constructor args.
+    meshLineMaterial: Omit<ThreeElement<typeof MeshLineMaterial>, 'args'> & {
+      args?: ConstructorParameters<typeof MeshLineMaterial>;
+    };
   }
 }
 
@@ -250,7 +253,7 @@ function Band({
       </group>
       <mesh ref={band}>
         <meshLineGeometry />
-        <meshLineMaterial color="white" depthTest={false} resolution={isMobile ? [1000, 2000] : [1000, 1000]} useMap map={texture} repeat={[-3, 1]} lineWidth={lanyardWidth} />
+        <meshLineMaterial color="white" depthTest={false} resolution={isMobile ? [1000, 2000] : [1000, 1000]} useMap={1} map={texture} repeat={[-3, 1]} lineWidth={lanyardWidth} />
       </mesh>
     </>
   );
