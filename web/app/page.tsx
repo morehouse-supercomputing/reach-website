@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 const partners = [
-  { slug: "morehouse", abbr: "MC", name: "Morehouse College", role: "Lead Institution", logo: "/morehouse-college-seal.svg" },
+  { slug: "morehouse", abbr: "MC", name: "Morehouse College", role: "Partner Institution", logo: "/morehouse-college-seal.svg" },
   { slug: "clark-atlanta", abbr: "CAU", name: "Clark Atlanta University", role: "Partner Institution", logo: "/clark-atlanta-seal.svg" },
   { slug: "claflin", abbr: "CU", name: "Claflin University", role: "Partner Institution", logo: "/claflin-seal.png" },
   { slug: "famu", abbr: "FAMU", name: "Florida A&M University", role: "Partner Institution", logo: "/famu-seal.png" },
@@ -13,7 +13,7 @@ const partners = [
   { slug: "prairie-view", abbr: "PV", name: "Prairie View A&M", role: "Partner Institution", logo: "/prairie-view-seal.svg" },
   { slug: "spelman", abbr: "SC", name: "Spelman College", role: "Partner Institution", logo: "/spelman-college-logo.svg" },
   { slug: "tuskegee", abbr: "TU", name: "Tuskegee University", role: "Partner Institution", logo: "/tuskegee-university-seal.svg" },
-  { slug: "xavier", abbr: "XU", name: "Xavier University of Louisiana", role: "Partner Institution", logo: "/xavier-university-logo.png" },
+  { slug: "xavier", abbr: "XU", name: "Xavier University of Louisiana", role: "Partner Institution", logo: "/xavier-hbcu-logo.svg" },
 ];
 const marq = [{ name: "Google Research", logo: "/google-research-logo-t.png" }, ...partners.map((p) => ({ name: p.name, logo: p.logo }))].filter((m) => m.logo);
 
@@ -84,7 +84,7 @@ export default function Home() {
         <div className="wrap row">
           <div className="logo"><span className="mk" />REACH</div>
           <div className="links">
-            <a href="#mission">Mission</a><a href="#framework">Framework</a><a href="#leaderboard">Leaderboard</a><a href="/collaborators">Collaborators</a><a href="#roadmap">Roadmap</a>
+            <a href="#mission">Mission</a><a href="#framework">Framework</a><a href="#leaderboard">Leaderboard</a><a href="/collaborators">Collaborators</a><a href="/gallery">Gallery</a><a href="#roadmap">Roadmap</a>
           </div>
           <div className="right"><a className="btn blue sm" href="#leaderboard">View the Leaderboard</a></div>
         </div>

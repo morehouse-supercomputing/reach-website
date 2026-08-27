@@ -17,12 +17,12 @@ type Institution = {
 // Template data — duplicate per school (or make it /partner/[slug]). Faculty from the consortium deck.
 const inst: Institution = {
   name: "Morehouse College",
-  role: "Lead Institution",
+  role: "Partner Institution",
   logo: "/morehouse-college-seal.svg",
   location: "Atlanta, Georgia",
   accent: "#1a73e8",
   blurb:
-    "A founding partner of the REACH GenAI Consortium. Morehouse anchors the coordination of community-informed evaluation research across the twelve HBCU partners and Google Research.",
+    "One of twelve HBCU partners in the REACH GenAI Consortium, working alongside Google Research. Morehouse co-leads Workstream 5 with Google and Howard, and administers the consortium's technical cloud infrastructure.",
   faculty: [
     { name: "Dr. Ashley Scruse", title: "Researcher & Faculty Lead", initials: "AS" },
     { name: "Dr. Kinnis Gosha", title: "Chair, Computer Science Department", initials: "KG" },

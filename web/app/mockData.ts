@@ -43,7 +43,7 @@ export const mockInstitutions: Institution[] = [
     name: "Morehouse College",
     location: "Atlanta, GA",
     logo: "MC",
-    bio: "Morehouse College coordinates overall workstream efforts, leads Workstream 5 (Programmatic Development & Dissemination) alongside Google and Howard, and administers the REACH technical cloud infrastructure.",
+    bio: "Morehouse College co-leads Workstream 5 (Programmatic Development & Dissemination) alongside Google and Howard, and administers the REACH technical cloud infrastructure.",
     workstreams: ["ws1", "ws5"]
   },
   {
