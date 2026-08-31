@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import type { Researcher } from "../lib/data";
-import { researcherAccent } from "../lib/data";
+import { researcherAccent, researcherPhotoUrl } from "../lib/data";
 
 const Lanyard = dynamic(() => import("./Lanyard"), { ssr: false });
 
@@ -10,7 +10,22 @@ function initialsOf(r: Researcher) {
   return `${r.firstName[0]}${r.lastName[0]}`.toUpperCase();
 }
 
-function badgePng(r: Researcher): string {
+// Loads the researcher's bucket headshot for drawing into the badge canvas.
+// crossOrigin is required for toDataURL() to work on a cross-origin image;
+// the bucket's public/** objects need matching CORS headers (see storage
+// bucket context doc). Resolves null on any failure so callers fall back
+// to the initials circle instead of drawing a broken image.
+function loadPhoto(src: string): Promise<HTMLImageElement | null> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+}
+
+function badgePng(r: Researcher, photo: HTMLImageElement | null): string {
   const accent = researcherAccent(r);
   const fullName = `${r.prefix ? r.prefix + " " : ""}${r.firstName} ${r.lastName}`;
   const W = 600,
@@ -45,15 +60,32 @@ function badgePng(r: Researcher): string {
   x.textAlign = "right";
   x.font = "16px Helvetica, Arial, sans-serif";
   x.fillText("GENAI CONSORTIUM", W - 48, 90);
-  x.fillStyle = accent;
-  x.beginPath();
-  x.arc(W / 2, 330, 108, 0, Math.PI * 2);
-  x.fill();
-  x.fillStyle = "#ffffff";
+  const cx = W / 2,
+    cy = 330,
+    radius = 108;
+  if (photo) {
+    x.save();
+    x.beginPath();
+    x.arc(cx, cy, radius, 0, Math.PI * 2);
+    x.closePath();
+    x.clip();
+    const side = Math.min(photo.width, photo.height);
+    const sx = (photo.width - side) / 2;
+    const sy = (photo.height - side) / 2;
+    x.drawImage(photo, sx, sy, side, side, cx - radius, cy - radius, radius * 2, radius * 2);
+    x.restore();
+  } else {
+    x.fillStyle = accent;
+    x.beginPath();
+    x.arc(cx, cy, radius, 0, Math.PI * 2);
+    x.fill();
+    x.fillStyle = "#ffffff";
+    x.textAlign = "center";
+    x.textBaseline = "middle";
+    x.font = "700 92px Georgia, serif";
+    x.fillText(initialsOf(r), cx, cy + 6);
+  }
   x.textAlign = "center";
-  x.textBaseline = "middle";
-  x.font = "700 92px Georgia, serif";
-  x.fillText(initialsOf(r), W / 2, 336);
   x.textBaseline = "alphabetic";
   x.fillStyle = "#211f1a";
   x.font = fullName.length > 22 ? "700 36px Georgia, serif" : "700 44px Georgia, serif";
@@ -101,10 +133,16 @@ export default function ResearcherProfile({ researcher }: { researcher: Research
   const accent = researcherAccent(researcher);
 
   useEffect(() => {
-    setFront(badgePng(researcher));
+    let cancelled = false;
+    loadPhoto(researcherPhotoUrl(researcher)).then((photo) => {
+      if (!cancelled) setFront(badgePng(researcher, photo));
+    });
     const img = new Image();
     img.onload = () => setBand(makeBand(img));
     img.src = "/google-research-logo-t.png";
+    return () => {
+      cancelled = true;
+    };
   }, [researcher]);
 
   return (

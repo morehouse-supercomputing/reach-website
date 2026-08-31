@@ -2,7 +2,8 @@
 
 import { useState, useMemo, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { RESEARCHERS_DATA, INSTITUTION_NAMES, WORKSTREAMS, researcherSlug } from "../../lib/data";
+import { RESEARCHERS_DATA, INSTITUTION_NAMES, WORKSTREAMS, researcherSlug, researcherPhotoUrl } from "../../lib/data";
+import LogoImage from "../../components/LogoImage";
 
 const INSTITUTIONS = ["All Institutions", ...INSTITUTION_NAMES];
 const WORKSTREAM_OPTIONS = ["All Workstreams", ...WORKSTREAMS];
@@ -149,9 +150,16 @@ function ResearchersGridContent() {
                   <div className="px-6 pb-6 flex-1 flex flex-col relative">
                     {/* Headshot / Initials Bubble */}
                     <div className="relative -mt-12 mb-4 w-20 h-20 rounded-2xl overflow-hidden border-4 border-surface-container-lowest shadow-md">
-                      <div className={`w-full h-full flex items-center justify-center font-bold text-xl ${researcher.avatarColor}`}>
-                        {initials}
-                      </div>
+                      <LogoImage
+                        src={researcherPhotoUrl(researcher)}
+                        alt={`${researcher.firstName} ${researcher.lastName}`}
+                        className="w-full h-full object-cover"
+                        fallback={
+                          <div className={`w-full h-full flex items-center justify-center font-bold text-xl ${researcher.avatarColor}`}>
+                            {initials}
+                          </div>
+                        }
+                      />
                     </div>
 
                     <h2 className="text-headline-md mb-1 text-on-surface">

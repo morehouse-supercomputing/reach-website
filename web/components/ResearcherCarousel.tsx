@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { RESEARCHERS_DATA } from "../lib/data";
+import { RESEARCHERS_DATA, researcherPhotoUrl } from "../lib/data";
+import LogoImage from "./LogoImage";
 
 // Carousel spotlights a fixed subset of the full directory
 const CAROUSEL_RESEARCHERS = RESEARCHERS_DATA.slice(0, 4);
@@ -83,9 +84,16 @@ export default function ResearcherCarousel({ searchQuery = "" }: { searchQuery?:
               {/* Avatar side */}
               <div className="w-full md:w-2/5 p-8 flex items-center justify-center bg-surface-container-low border-b md:border-b-0 md:border-r border-outline-variant/60">
                 <div className="w-32 h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border-4 border-surface-container-lowest shadow-lg relative">
-                  <div className={`w-full h-full flex items-center justify-center font-extrabold text-3xl md:text-4xl ${current.avatarColor}`}>
-                    {initials}
-                  </div>
+                  <LogoImage
+                    src={researcherPhotoUrl(current)}
+                    alt={`${current.firstName} ${current.lastName}`}
+                    className="w-full h-full object-cover"
+                    fallback={
+                      <div className={`w-full h-full flex items-center justify-center font-extrabold text-3xl md:text-4xl ${current.avatarColor}`}>
+                        {initials}
+                      </div>
+                    }
+                  />
                 </div>
               </div>
 

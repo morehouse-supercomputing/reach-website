@@ -129,6 +129,20 @@ export function researcherAccent(r: Researcher): string {
   return WORKSTREAM_ACCENTS[key] || "#1a73e8";
 }
 
+// Public-read bucket for content whose lifecycle is independent of a deploy
+// (headshots today). Objects live at a fixed path per person, keyed by the
+// same slug used for routing, so a new upload is picked up with no code change.
+//
+// Goes through firebasestorage.googleapis.com (not storage.googleapis.com) —
+// only Firebase's own API layer enforces the Storage Security Rules; the raw
+// GCS endpoint is governed by IAM/ACLs instead and ignores those rules.
+const MEDIA_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? "reach-website-a1f84.firebasestorage.app";
+
+export function researcherPhotoUrl(r: Researcher): string {
+  const path = `public/headshots/${researcherSlug(r)}/photo.jpg`;
+  return `https://firebasestorage.googleapis.com/v0/b/${MEDIA_BUCKET}/o/${encodeURIComponent(path)}?alt=media`;
+}
+
 export interface Institution {
   /** Short URL-safe slug, e.g. "morehouse" — used for routing/anchors (/institutions#slug). */
   id: string;
