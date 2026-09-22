@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --bg: #f4f1ea;
   --paper: #fffdf8;
@@ -15,6 +17,56 @@
   --shadow: 0 2px 8px rgba(33,31,26,.05), 0 14px 40px rgba(33,31,26,.07);
   --shadow-h: 0 8px 20px rgba(33,31,26,.10), 0 26px 60px rgba(33,31,26,.12);
   font-synthesis: none;
+
+  /* Font mappings */
+  --font-plus-jakarta-sans: var(--font-body);
+}
+
+@theme {
+  /* Font families */
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+
+  /* Map Tailwind colors to the demo-site variables */
+  --color-background: var(--bg);
+  --color-on-background: var(--ink);
+
+  --color-surface: var(--paper);
+  --color-surface-dim: var(--alt);
+  --color-surface-bright: var(--paper);
+  --color-surface-container-lowest: var(--paper);
+  --color-surface-container-low: var(--alt);
+  --color-surface-container: var(--alt);
+  --color-surface-container-high: var(--alt);
+  --color-surface-container-highest: var(--alt);
+
+  --color-on-surface: var(--ink);
+  --color-on-surface-variant: var(--ink-2);
+  --color-inverse-surface: var(--ink);
+  --color-inverse-on-surface: var(--bg);
+
+  --color-outline: var(--border);
+  --color-outline-variant: var(--border);
+
+  --color-primary: var(--blue);
+  --color-on-primary: #ffffff;
+  --color-primary-container: var(--blue-soft);
+  --color-on-primary-container: var(--blue-d);
+
+  --color-secondary: var(--muted);
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: var(--alt);
+  --color-on-secondary-container: var(--ink-2);
+
+  --color-tertiary: var(--amber-ink);
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: var(--amber-soft);
+  --color-on-tertiary-container: var(--amber-ink);
+
+  --color-error: var(--red);
+  --color-on-error: #ffffff;
+  --color-error-container: var(--red-soft);
+  --color-on-error-container: var(--red-d);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -320,3 +372,74 @@ footer.f .bottom { margin-top: 40px; padding-top: 22px; border-top: 1px solid #3
 .gal-arrow.r { right: 28px; }
 @media (max-width: 700px){ .gal-arrow { display: none; } .gal-box { padding: 20px; } }
 @media (prefers-reduced-motion: reduce){ .gal-tile, .gal-mk, .gal-chip { transition: none; } .gal-tile { transform: none; } }
+
+/* ============ shared utilities (from feature/frontend) ============ */
+/* `a { color: inherit }` above sits outside any Tailwind @layer, so it beats
+   Tailwind color utilities applied straight to an <a> (unlayered author CSS
+   always wins over layered CSS of the same importance, regardless of
+   specificity). Anchors that need a real color set it through a plain class
+   like this instead of a Tailwind text-color utility. */
+.inst-link { color: rgba(255, 255, 255, 0.95); }
+.inst-link:hover { color: #fff; }
+
+/* Custom utilities from frontend branch */
+.text-display-lg {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+}
+@media (min-width: 768px) {
+  .text-display-lg {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+.text-headline-md {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+}
+.text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: var(--font-body);
+}
+.text-body-md {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: var(--font-body);
+}
+.text-label-sm {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  font-family: var(--font-body);
+}
+.text-label-xs {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+
+.shadow-elevation-1 {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+.shadow-elevation-2 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.btn-elevated {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.2s, transform 0.2s, filter 0.2s;
+}
+.btn-elevated:hover {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.06);
+}
