@@ -1,5 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import CoverflowCarousel from "../components/CoverflowCarousel";
+
+const searchSuggestions = ["Applied AI", "Morehouse College", "AI Safety", "Cultural Heuristics"];
 
 const partners = [
   { slug: "morehouse", abbr: "MC", name: "Morehouse College", role: "Partner Institution", logo: "/morehouse-college-seal.svg" },
@@ -65,6 +69,8 @@ const timeline = [
 
 export default function Home() {
   const [ri, setRi] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
   useEffect(() => {
     const t = setInterval(() => setRi((i) => (i + 1) % rotWords.length), 2200);
     return () => clearInterval(t);
@@ -77,6 +83,12 @@ export default function Home() {
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    router.push(`/researchers?q=${encodeURIComponent(searchQuery)}`);
+  };
 
   return (
     <>
@@ -96,7 +108,46 @@ export default function Home() {
         <div className="wrap in">
           <h1>Measuring how well AI understands<br /><span className="rotwrap"><span className="rot anim" key={ri} style={{ color: rotWords[ri].c }}>{rotWords[ri].w}</span></span></h1>
           <p className="sub">A Google Research and HBCU consortium building the benchmarks, datasets, and public leaderboard that test how generative AI handles hyper-local culture.</p>
-          <div className="cta">
+          <form
+            onSubmit={handleSearchSubmit}
+            style={{
+              width: "100%", maxWidth: 600, margin: "32px auto 0",
+              background: "var(--paper)", border: "1px solid var(--border)",
+              padding: 8, borderRadius: 999, display: "flex", alignItems: "center",
+              gap: 8, boxShadow: "var(--shadow)",
+            }}
+          >
+            <div style={{ display: "flex", flex: 1, alignItems: "center", paddingLeft: 12 }}>
+              <svg style={{ height: 18, width: 18, color: "var(--muted)", flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search scholars, schools, or research interests..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{
+                  width: "100%", background: "transparent", border: "none", outline: "none",
+                  fontSize: 14.5, color: "var(--ink)", paddingLeft: 10, fontFamily: "var(--font-body)",
+                }}
+              />
+            </div>
+            <button type="submit" className="btn blue" style={{ padding: "8px 20px", fontSize: 14, borderRadius: 999 }}>Search</button>
+          </form>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8, fontSize: 12.5, color: "var(--muted)", marginTop: 16 }}>
+            <span>Suggestions:</span>
+            {searchSuggestions.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => setSearchQuery(tag)}
+                style={{ background: "none", border: "none", color: "var(--blue)", textDecoration: "underline", cursor: "pointer", padding: 0, fontSize: 12.5 }}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+          <div className="cta" style={{ marginTop: 24 }}>
             <a className="btn blue" href="#leaderboard">Explore the Leaderboard</a>
             <a className="btn out" href="#mission">Our North Star</a>
           </div>
@@ -110,6 +161,18 @@ export default function Home() {
         <div className="marq-cap">Google Research + 12 HBCU partner institutions</div>
         <div className="marquee"><div className="track">{[...marq, ...marq].map((m, i) => (<div className="chip logo" key={i}><img className="lg" src={m.logo} alt={m.name} /></div>))}</div></div>
       </header>
+
+      {/* FEATURED RESEARCHERS */}
+      <section className="block" id="researchers-section" style={{ overflow: "hidden" }}>
+        <div className="wrap reveal">
+          <div className="eyebrow">Featured Researchers</div>
+          <h2 className="h2">Scholars driving AI innovation and safety.</h2>
+          <p className="lead">Meet the researchers, advisors, and faculty cataloging local cultural insights and defining cultural competency evaluation lenses.</p>
+        </div>
+        <div style={{ marginTop: 40 }}>
+          <CoverflowCarousel searchQuery={searchQuery} />
+        </div>
+      </section>
 
       {/* MISSION */}
       <section className="block alt" id="mission">
