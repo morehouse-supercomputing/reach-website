@@ -159,14 +159,14 @@ export interface Institution {
 }
 
 // The 12 REACH consortium partners — the same set shown on the homepage's
-// consortium marquee/bento grid, Morehouse (the lead institution) first.
+// consortium marquee/bento grid, Morehouse first.
 // The /institutions page sorts this by name for its alphabetical scroll.
 export const INSTITUTIONS_DATA: Institution[] = [
   {
     id: "morehouse",
     name: "Morehouse College",
     abbr: "MC",
-    role: "Lead Institution",
+    role: "Partner Institution",
     city: "Atlanta",
     state: "GA",
     founded: 1867,
@@ -316,6 +316,6 @@ export const INSTITUTIONS_DATA: Institution[] = [
     history:
       "Founded in 1925, Xavier is the nation's only historically Black and Catholic university, and a top producer of Black students who go on to medical school.",
     accentColor: "from-[#00205B] to-[#C4B581]",
-    logo: "/xavier-university-logo.png",
+    logo: "/xavier-hbcu-logo.svg",
   },
 ];
